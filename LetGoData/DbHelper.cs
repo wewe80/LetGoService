@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LetGoData
+{
+	public class DbHelper
+	{
+		public static void JoinGroup(string userId, string groupId)
+		{
+			Group group = DbManager.Instance.FindById<Group>(LetGoData.Group.CollectionName, groupId);
+			if (group == null)
+			{
+				throw new Exception("group cannot be found.");
+			}
+
+			User user = DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, userId);
+			if (user == null)
+			{
+				throw new Exception("user cannot be found.");
+			}
+
+			if (group.Users != null && group.Users.Contains(userId))
+			{
+				throw new Exception("user has joined the group already.");
+			}
+
+			if (group.Users == null)
+			{
+				group.Users = new List<string> { userId };
+			}
+			else
+			{
+				group.Users.Add(userId);
+			}
+
+			// update the group
+			DbManager.Instance.Update(group);
+		}
+
+		public static void JoinEvent(string userId, string eventId)
+		{
+			Event eve = DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);
+			if (eve == null)
+			{
+				throw new Exception("event cannot be found.");
+			}
+
+			User user = DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, userId);
+			if (user == null)
+			{
+				throw new Exception("user cannot be found.");
+			}
+
+			if (eve.Users != null && eve.Users.Contains(userId))
+			{
+				throw new Exception("user has joined the event already.");
+			}
+
+			if (eve.Users == null)
+			{
+				eve.Users = new List<string> { userId };
+			}
+			else
+			{
+				eve.Users.Add(userId);
+			}
+			
+			// update the event
+			DbManager.Instance.Update(eve);
+		}
+	}
+}
