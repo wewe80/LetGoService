@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetGoService", "LetGoService\LetGoService.csproj", "{DBCEB679-C95E-481C-84A8-A41FC490127C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetGoData", "LetGoData\LetGoData.csproj", "{67C70123-9B9B-4854-9DC4-7B3FA5E37354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetGoData.UnitTests", "LetGoData.UnitTests\LetGoData.UnitTests.csproj", "{4446F184-35DD-4F69-9416-78281D30BAB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBCEB679-C95E-481C-84A8-A41FC490127C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCEB679-C95E-481C-84A8-A41FC490127C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCEB679-C95E-481C-84A8-A41FC490127C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCEB679-C95E-481C-84A8-A41FC490127C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C70123-9B9B-4854-9DC4-7B3FA5E37354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C70123-9B9B-4854-9DC4-7B3FA5E37354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C70123-9B9B-4854-9DC4-7B3FA5E37354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C70123-9B9B-4854-9DC4-7B3FA5E37354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4446F184-35DD-4F69-9416-78281D30BAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4446F184-35DD-4F69-9416-78281D30BAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4446F184-35DD-4F69-9416-78281D30BAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4446F184-35DD-4F69-9416-78281D30BAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
