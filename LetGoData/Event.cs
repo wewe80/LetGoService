@@ -15,7 +15,7 @@ namespace LetGoData
 
 		public string Description { get; set; }
 
-		public ObjectId GroupId { get; set; }
+		public string GroupId { get; set; }
 
 		public List<string> Users { get; set; }
 
