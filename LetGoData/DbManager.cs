@@ -70,7 +70,7 @@ namespace LetGoData
 			return collection.FindOne(query);
 		}
 
-		public List<T> Find<T>(string collectionName, List<string> idList) where T : BaseMongoObject
+		public List<T> FindByIdList<T>(string collectionName, List<string> idList) where T : BaseMongoObject
 		{
 			List<T> list = new List<T>();
 
