@@ -20,8 +20,8 @@ namespace LetGoData.UnitTests
 			{
 				User user = new User();
 				user.Id = Guid.NewGuid().ToString();
-				user.Name = "test 001";
-				user.Phone = "910-987-0988";
+				user.Name = Global.TEST_PREFIX + "test 001";
+				user.Phone = Global.TEST_PREFIX + "910-987-0988";
 
 				DbManager.Instance.Insert(user);
 
@@ -31,8 +31,8 @@ namespace LetGoData.UnitTests
 			{
 				User user = new User();
 				user.Id = Guid.NewGuid().ToString();
-				user.Name = "test 002";
-				user.Phone = "910-283-0988";
+				user.Name = Global.TEST_PREFIX + "test 002";
+				user.Phone = Global.TEST_PREFIX + "910-283-0988";
 
 				DbManager.Instance.Insert(user);
 
@@ -42,7 +42,7 @@ namespace LetGoData.UnitTests
 			{
 				Group group = new Group();
 				group.Id = Guid.NewGuid().ToString();
-				group.Name = "Table Tennis";
+				group.Name = Global.TEST_PREFIX + "Table Tennis";
 				group.Users = new List<string> { s_userIdList[0] };
 
 				DbManager.Instance.Insert(group);
@@ -116,6 +116,26 @@ namespace LetGoData.UnitTests
 				group.Users = new List<string> { s_userIdList[0] };
 				DbManager.Instance.Update(group);
 			}
+		}
+
+		[TestMethod]
+		public void TestSearchGroupByName()
+		{
+			List<Group> list = DbHelper.SearchGroupByName(Global.TEST_PREFIX + "Table Tennis");
+			Assert.IsTrue(list.Count == 1);
+		}
+		[TestMethod]
+		public void TestSearchUserByName()
+		{
+			List<User> list = DbHelper.SearchUserByName(Global.TEST_PREFIX + "test 002");
+			Assert.IsTrue(list.Count == 1 && list[0].Phone.Equals(Global.TEST_PREFIX + "910-283-0988"));
+		}
+
+		[TestMethod]
+		public void TestSearchUserByPhone()
+		{
+			List<User> list = DbHelper.SearchUserByPhone(Global.TEST_PREFIX + "910-987-0988");
+			Assert.IsTrue(list.Count == 1 && list[0].Name.Equals(Global.TEST_PREFIX + "test 001"));
 		}
 	}
 }

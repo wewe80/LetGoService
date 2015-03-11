@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="DbHelperTest.cs" />
     <Compile Include="EventTest.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="GroupTest.cs" />
     <Compile Include="UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver.Builders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,24 @@ namespace LetGoData
 {
 	public class DbHelper
 	{
+		public static List<Group> SearchGroupByName(string name)
+		{
+			var query = Query<Group>.EQ(e => e.Name, name);
+			return DbManager.Instance.Find<Group>(Group.CollectionName, query);
+		}
+
+		public static List<User> SearchUserByName(string name)
+		{
+			var query = Query<User>.EQ(e => e.Name, name);
+			return DbManager.Instance.Find<User>(User.CollectionName, query);
+		}
+
+		public static List<User> SearchUserByPhone(string phone)
+		{
+			var query = Query<User>.EQ(e => e.Phone, phone);
+			return DbManager.Instance.Find<User>(User.CollectionName, query);
+		}
+
 		public static void JoinGroup(string userId, string groupId)
 		{
 			Group group = DbManager.Instance.FindById<Group>(LetGoData.Group.CollectionName, groupId);
