@@ -64,5 +64,21 @@ namespace LetGoData
 			MongoCollection<T> collection = this.Database.GetCollection<T>(collectionName);
 			return collection.FindOne(query);
 		}
+
+		public List<T> Find<T>(string collectionName, List<string> idList) where T : BaseMongoObject
+		{
+			List<T> list = new List<T>();
+
+			var query = Query<T>.In(e => e.Id, idList);
+
+			MongoCollection<T> collection = this.Database.GetCollection<T>(collectionName);
+			MongoCursor<T> cursor = collection.Find(query);
+			foreach (T item in cursor)
+			{
+				list.Add(item);
+			}
+
+			return list;
+		}
 	}
 }
