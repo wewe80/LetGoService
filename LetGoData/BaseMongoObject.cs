@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace LetGoData
 {
-	[Serializable]
 	public abstract class BaseMongoObject
 	{
-		public ObjectId Id { get; set; }
+		public string Id { get; set; }
 
 		public abstract string GetCollectionName();
 	}

@@ -60,7 +60,7 @@ namespace LetGoData
 
 		public T FindById<T>(string collectionName, string id) where T : BaseMongoObject
 		{
-			var query = Query<T>.EQ(e => e.Id, new ObjectId(id));
+			var query = Query<T>.EQ(e => e.Id, id);
 			MongoCollection<T> collection = this.Database.GetCollection<T>(collectionName);
 			return collection.FindOne(query);
 		}

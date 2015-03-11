@@ -17,9 +17,9 @@ namespace LetGoService.Controllers
         }
 
         // GET api/user/5
-        public string Get(string id)
+        public User Get(string id)
         {
-			return DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, id).Name;
+			return DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, id);
         }
 
         // POST api/user

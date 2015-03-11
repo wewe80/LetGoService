@@ -7,10 +7,25 @@ namespace LetGoData.UnitTests
 	public class UserTest
 	{
 		[TestMethod]
-		public void TestGetUserById()
+		public void TestCreateUser()
 		{
-			User user = DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, "54ff8e5bf6a5ec1b78ac1e73");
-			Assert.IsTrue(user != null && user.Name.Equals("Wei Wei"));
+			string userId = Guid.NewGuid().ToString();
+
+			{
+				User user = new User();
+				user.Id = userId;
+				user.Name = "Wei Wei";
+				user.Phone = "425-974-0443";
+
+				DbManager.Instance.Insert(user);
+			}
+
+			{
+				User user = DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, userId);
+				Assert.IsTrue(user != null && user.Name.Equals("Wei Wei"));
+
+				DbManager.Instance.Delete(user);
+			}
 		}
 	}
 }
