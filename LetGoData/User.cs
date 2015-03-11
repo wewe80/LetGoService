@@ -8,7 +8,6 @@ using MongoDB.Bson;
 
 namespace LetGoData
 {
-	[Serializable]
 	public class User : BaseMongoObject
 	{
 		public const string CollectionName = "users";
