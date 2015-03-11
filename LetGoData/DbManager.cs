@@ -38,9 +38,14 @@ namespace LetGoData
 
 		public void Delete(BaseMongoObject obj)
 		{
-			var query = Query<BaseMongoObject>.EQ(e => e.Id, obj.Id);
+			Delete(obj.GetCollectionName(), obj.Id);
+		}
 
-			MongoCollection collection = this.Database.GetCollection(obj.GetCollectionName());
+		public void Delete(string collectionName, string id)
+		{
+			var query = Query<BaseMongoObject>.EQ(e => e.Id, id);
+
+			MongoCollection collection = this.Database.GetCollection(collectionName);
 			collection.Remove(query);
 		}
 
