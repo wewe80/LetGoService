@@ -25,6 +25,14 @@ namespace LetGoService.Controllers
             return DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);
         }
 
+        public Event GetByTitle(string title)
+        {
+            List<Event> eventList = DbHelper.SearchEventByTitle(title);
+            if (eventList.Count == 0) return null;
+            string eventId = eventList[0].Id;
+            return DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);
+        }
+
         // POST api/event
         public void Post([FromBody]Event value)
         {
@@ -41,6 +49,24 @@ namespace LetGoService.Controllers
         public void Delete(string id)
         {
             DbManager.Instance.Delete(LetGoData.Event.CollectionName, id);
+        }
+
+        // JOIN api/event/join/5
+        public void Join(string id, [FromBody]string value)
+        {
+            Event eve = Get(id);
+
+            if (eve.Users == null)
+            {
+                eve.Users = new List<string> { value };
+
+            }
+            else
+            {
+                eve.Users.Add(value);
+            }
+
+            DbManager.Instance.Update(eve);
         }
     }
 }
