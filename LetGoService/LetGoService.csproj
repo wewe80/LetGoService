@@ -168,7 +168,9 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Properties\PublishProfiles\letsgoo - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\letsgoo - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\letsgoservice - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\letsgoservice - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\letsgoservice - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\letsgoservice - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

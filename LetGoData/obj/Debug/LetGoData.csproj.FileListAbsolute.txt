@@ -1,0 +1,12 @@
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\LetGoData.dll
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\LetGoData.pdb
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Bson.dll
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Driver.dll
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Driver.Legacy.dll
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Bson.xml
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Driver.xml
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\bin\Debug\MongoDB.Driver.Legacy.xml
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\obj\Debug\LetGoData.csprojResolveAssemblyReference.cache
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\obj\Debug\LetGoData.dll
+C:\Users\charliep\Desktop\Hack\LetGoService\LetGoData\obj\Debug\LetGoData.pdb

@@ -90,7 +90,7 @@ namespace LetGoData.UnitTests
 				Group group = DbManager.Instance.FindById<Group>(LetGoData.Group.CollectionName, id);
 				Assert.IsTrue(group != null && group.Users.Count == 2 && group.Name == "Temp");
 
-				DbManager.Instance.Delete(group);
+				//DbManager.Instance.Delete(group);
 			}
 		}
 
