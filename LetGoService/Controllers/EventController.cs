@@ -54,19 +54,7 @@ namespace LetGoService.Controllers
         // JOIN api/event/join/5
         public void Join(string id, [FromBody]string value)
         {
-            Event eve = Get(id);
-
-            if (eve.Users == null)
-            {
-                eve.Users = new List<string> { value };
-
-            }
-            else
-            {
-                eve.Users.Add(value);
-            }
-
-            DbManager.Instance.Update(eve);
+			DbHelper.JoinEvent(value, id);
         }
     }
 }
