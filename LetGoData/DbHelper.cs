@@ -11,7 +11,13 @@ namespace LetGoData
 {
 	public class DbHelper
 	{
-		public static List<Group> SearchGroupByName(string name)
+        public static List<Event> SearchEventByTitle(string title)
+        {
+            var query = Query<Event>.EQ(e => e.Title, title);
+            return DbManager.Instance.Find<Event>(Event.CollectionName, query);
+        }
+        
+        public static List<Group> SearchGroupByName(string name)
 		{
 			var query = Query<Group>.Matches(e => e.Name, string.Format("/^{0}/", name));
 			return DbManager.Instance.Find<Group>(Group.CollectionName, query);

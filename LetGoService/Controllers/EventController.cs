@@ -4,36 +4,69 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using LetGoData;
 
 namespace LetGoService.Controllers
 {
     public class EventController : ApiController
     {
         // GET api/event
-        public IEnumerable<string> Get()
+        public IEnumerable<Event> Get()
         {
-            return new string[] { "value1", "value2" };
+            throw new NotImplementedException();
         }
 
         // GET api/event/5
-        public string Get(int id)
+        public Event Get(string id)
         {
-            return "value";
+            List<Event> eventList = DbHelper.SearchEventByTitle(id);
+            if (eventList.Count == 0) return null;
+            string eventId = eventList[0].Id;
+            return DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);
+        }
+
+        public Event GetByTitle(string title)
+        {
+            List<Event> eventList = DbHelper.SearchEventByTitle(title);
+            if (eventList.Count == 0) return null;
+            string eventId = eventList[0].Id;
+            return DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);
         }
 
         // POST api/event
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Event value)
         {
+            DbManager.Instance.Insert(value);
         }
 
         // PUT api/event/5
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]Event value)
         {
+            DbManager.Instance.Update(value);
         }
 
         // DELETE api/event/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            DbManager.Instance.Delete(LetGoData.Event.CollectionName, id);
+        }
+
+        // JOIN api/event/join/5
+        public void Join(string id, [FromBody]string value)
+        {
+            Event eve = Get(id);
+
+            if (eve.Users == null)
+            {
+                eve.Users = new List<string> { value };
+
+            }
+            else
+            {
+                eve.Users.Add(value);
+            }
+
+            DbManager.Instance.Update(eve);
         }
     }
 }
