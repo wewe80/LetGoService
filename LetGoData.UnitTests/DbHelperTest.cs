@@ -124,11 +124,26 @@ namespace LetGoData.UnitTests
 			List<Group> list = DbHelper.SearchGroupByName(Global.TEST_PREFIX + "Table Tennis");
 			Assert.IsTrue(list.Count == 1);
 		}
+
+		[TestMethod]
+		public void TestSearchGroupByPartialName()
+		{
+			List<Group> list = DbHelper.SearchGroupByName(Global.TEST_PREFIX);
+			Assert.IsTrue(list.Count == 1);
+		}
+
 		[TestMethod]
 		public void TestSearchUserByName()
 		{
 			List<User> list = DbHelper.SearchUserByName(Global.TEST_PREFIX + "test 002");
 			Assert.IsTrue(list.Count == 1 && list[0].Phone.Equals(Global.TEST_PREFIX + "910-283-0988"));
+		}
+
+		[TestMethod]
+		public void TestSearchUserByPartialName()
+		{
+			List<User> list = DbHelper.SearchUserByName(Global.TEST_PREFIX);
+			Assert.IsTrue(list.Count == 2);
 		}
 
 		[TestMethod]

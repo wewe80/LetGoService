@@ -8,6 +8,6 @@ namespace LetGoData.UnitTests
 {
 	public class Global
 	{
-		public const string TEST_PREFIX = "@&@!^@#*^#@";
+		public const string TEST_PREFIX = "20150312";
 	}
 }

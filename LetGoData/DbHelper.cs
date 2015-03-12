@@ -1,8 +1,10 @@
-﻿using MongoDB.Driver.Builders;
+﻿using MongoDB.Bson;
+using MongoDB.Driver.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LetGoData
@@ -11,13 +13,13 @@ namespace LetGoData
 	{
 		public static List<Group> SearchGroupByName(string name)
 		{
-			var query = Query<Group>.EQ(e => e.Name, name);
+			var query = Query<Group>.Matches(e => e.Name, string.Format("/^{0}/", name));
 			return DbManager.Instance.Find<Group>(Group.CollectionName, query);
 		}
 
 		public static List<User> SearchUserByName(string name)
 		{
-			var query = Query<User>.EQ(e => e.Name, name);
+			var query = Query<User>.Matches(e => e.Name, string.Format("/^{0}/", name));
 			return DbManager.Instance.Find<User>(User.CollectionName, query);
 		}
 
