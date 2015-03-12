@@ -17,10 +17,10 @@ namespace LetGoService.Controllers
         }
 
         // GET api/event/5
-        public Event Get(string title)
+        public Event Get(string id)
         {
-            List<Event> eventList = DbHelper.SearchEventByTitle(title);
-            if (eventList.Count != 0) return null;
+            List<Event> eventList = DbHelper.SearchEventByTitle(id);
+            if (eventList.Count == 0) return null;
             string eventId = eventList[0].Id;
             return DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);
         }

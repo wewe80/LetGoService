@@ -13,7 +13,7 @@ namespace LetGoService.Controllers
         // GET api/user
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            throw new NotImplementedException();
         }
 
         // GET api/user/5
@@ -23,18 +23,21 @@ namespace LetGoService.Controllers
         }
 
         // POST api/user
-        public void Post([FromBody]string value)
+        public void Post([FromBody]User value)
         {
+            DbManager.Instance.Insert(value);
         }
 
         // PUT api/user/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]User value)
         {
+            DbManager.Instance.Update(value);
         }
 
         // DELETE api/user/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            DbManager.Instance.Delete(LetGoData.User.CollectionName, id);
         }
     }
 }
