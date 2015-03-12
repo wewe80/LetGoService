@@ -67,6 +67,31 @@ namespace LetGoData
 			DbManager.Instance.Update(group);
 		}
 
+		public static void LeaveGroup(string userId, string groupId)
+		{
+			Group group = DbManager.Instance.FindById<Group>(LetGoData.Group.CollectionName, groupId);
+			if (group == null)
+			{
+				throw new Exception("group cannot be found.");
+			}
+
+			User user = DbManager.Instance.FindById<User>(LetGoData.User.CollectionName, userId);
+			if (user == null)
+			{
+				throw new Exception("user cannot be found.");
+			}
+
+			if (group.Users == null || !group.Users.Contains(userId))
+			{
+				throw new Exception("user is not in the group.");
+			}
+
+			group.Users.Remove(userId);
+
+			// update the group
+			DbManager.Instance.Update(group);
+		}
+
 		public static void JoinEvent(string userId, string eventId)
 		{
 			Event eve = DbManager.Instance.FindById<Event>(LetGoData.Event.CollectionName, eventId);

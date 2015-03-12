@@ -119,6 +119,30 @@ namespace LetGoData.UnitTests
 		}
 
 		[TestMethod]
+		public void TestQuickLeaveGroup()
+		{
+			string groupId = s_groupIdList[0];
+			string userId = s_userIdList[0];
+
+			{
+				Group group = DbManager.Instance.FindById<Group>(LetGoData.Group.CollectionName, groupId);
+				Assert.IsTrue(group != null && group.Users.Count == 1);
+			}
+
+			DbHelper.LeaveGroup(userId, groupId);
+
+			{
+				Group group = DbManager.Instance.FindById<Group>(LetGoData.Group.CollectionName, groupId);
+				Assert.IsTrue(group != null && group.Users.Count == 0);
+			}
+
+			{
+				// restsore data
+				DbHelper.JoinGroup(userId, groupId);
+			}
+		}
+
+		[TestMethod]
 		public void TestSearchGroupByName()
 		{
 			List<Group> list = DbHelper.SearchGroupByName(Global.TEST_PREFIX + "Table Tennis");
